@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import AddProductForm from "./AddProductForm";
+import AddProductForm from "../../components/product-management/AddProductForm";
 import Modal from "react-modal";
+import EditProductForm from "../../components/product-management/EditProductForm";
 
 const ProductManagement = () => {
   const [products, setProducts] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpenEdit, setModalIsOpenEdit] = useState(false);
+  const [productBeingEdited, setProductBeingEdited] = useState(null);
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -28,11 +32,20 @@ const ProductManagement = () => {
   const handleAddProductSubmit = (newProduct) => {
     // Xử lý việc thêm sản phẩm mới (gửi dữ liệu đến server, cập nhật danh sách sản phẩm, v.v.)
     console.log("New product added:", newProduct);
+    alert(`Sản phẩm ${newProduct.name} được thêm thành công !!!`);
     setModalIsOpen(false); // Ẩn form sau khi thêm sản phẩm
   };
 
   const handleEditProduct = (id) => {
-    // Logic sửa sản phẩm
+    setModalIsOpenEdit(true);
+    const productEdit = products.find((product) => product.id == id);
+    setProductBeingEdited(productEdit);
+  };
+
+  // To handle form submission
+  const handleSubmitEdit = (updatedProduct) => {
+    alert(`Sửa sản phẩm ${updatedProduct.name} thành công !!!`);
+    setModalIsOpenEdit(false); // Ẩn form sau khi thêm sản phẩm
   };
 
   const handleDeleteProduct = async (id) => {
@@ -60,14 +73,37 @@ const ProductManagement = () => {
         className="modal"
         overlayClassName="modal-overlay"
       >
-        <h2>Thêm Sản Phẩm</h2>
+        <div className="modal-addproduct-controller">
+          <h2>Thêm Sản Phẩm</h2>
+          <button
+            onClick={() => setModalIsOpen(false)}
+            style={styles.closeButton}
+          >
+            X
+          </button>
+        </div>
         <AddProductForm onAddProduct={handleAddProductSubmit} />
-        <button
-          onClick={() => setModalIsOpen(false)}
-          style={styles.closeButton}
-        >
-          Đóng
-        </button>
+      </Modal>
+      <Modal
+        isOpen={modalIsOpenEdit}
+        onRequestClose={() => setModalIsOpenEdit(false)}
+        contentLabel="Edit Product Modal"
+        className="modal"
+        overlayClassName="modal-overlay"
+      >
+        <div className="modal-addproduct-controller">
+          <h2>Sửa Sản Phẩm</h2>
+          <button
+            onClick={() => setModalIsOpenEdit(false)}
+            style={styles.closeButton}
+          >
+            X
+          </button>
+        </div>
+        <EditProductForm
+          onEditProduct={handleSubmitEdit}
+          productedit={productBeingEdited}
+        />
       </Modal>
       <table style={styles.table}>
         <thead>
@@ -190,8 +226,8 @@ const styles = {
   closeButton: {
     padding: "10px",
     fontSize: "14px",
-    color: "#fff",
-    backgroundColor: "red",
+    color: "black",
+    fontWeight: "bold",
     border: "none",
     borderRadius: "4px",
     textDecoration: "none",

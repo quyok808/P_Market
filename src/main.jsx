@@ -8,7 +8,8 @@ import StorePage from "./pages/users/StorePage";
 import AdminPage from "./pages/admin/AdminPage";
 import Dashboard from "./pages/admin/Dashboard";
 import ProductManagement from "./pages/admin/ProductManagement";
-import AddProductForm from "./pages/admin/AddProductForm";
+import AddProductForm from "./components/product-management/AddProductForm";
+import CategoriesManagement from "./pages/admin/CategoriesManagement";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
       {
-        path: "product-management",
+        path: "products-management",
         element: <ProductManagement />,
         errorElement: <ErrorPage />,
         children: [
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
             errorElement: <ErrorPage />,
           },
         ],
+      },
+      {
+        path: "categories-management",
+        element: <CategoriesManagement />,
+        errorElement: <ErrorPage />,
       },
     ],
   },
