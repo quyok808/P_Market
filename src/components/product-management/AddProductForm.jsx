@@ -40,9 +40,6 @@ const AddProductForm = ({ onAddProduct }) => {
 
   const handleCategoryChange = (e) => {
     const selectedCategoryId = e.target.value;
-    // const selectedCategory = categories.find(
-    //   (category) => category.id === selectedCategoryId
-    // );
     setFormData({
       ...formData,
       category: selectedCategoryId, // Set the entire category object
@@ -77,6 +74,7 @@ const AddProductForm = ({ onAddProduct }) => {
       .then((response) => {
         // Handle the response
         onAddProduct(response.data);
+
         // Reset the form after submission
         setFormData({
           id: "",

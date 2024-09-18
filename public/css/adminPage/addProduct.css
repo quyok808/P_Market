@@ -64,3 +64,8 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
 }
+
+.modal-addproduct-controller {
+  display: flex;
+  justify-content: space-between;
+}

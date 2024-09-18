@@ -15,7 +15,10 @@ export default function AdminPage() {
                 <Link to="/admin/dashboard">Dashboard</Link>
               </li>
               <li>
-                <Link to="/admin/product-management">Sản phẩm</Link>
+                <Link to="/admin/products-management">Sản phẩm</Link>
+              </li>
+              <li>
+                <Link to="/admin/categories-management">Danh mục</Link>
               </li>
               <li>
                 <a href="#">Đơn hàng</a>
@@ -25,9 +28,6 @@ export default function AdminPage() {
               </li>
               <li>
                 <a href="#">Báo cáo</a>
-              </li>
-              <li>
-                <a href="#">Cài đặt</a>
               </li>
             </ul>
           </div>
