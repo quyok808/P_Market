@@ -1,0 +1,75 @@
+@import url(./productmanagement.css);
+
+.sidebar {
+  width: 250px;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  min-height: 100vh;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+.sidebar h2 {
+  margin-top: 0;
+  color: #ecf0f1;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebar ul li {
+  margin: 15px 0;
+}
+.sidebar ul li a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+.sidebar ul li a:hover {
+  background-color: #34495e;
+}
+.content-admin {
+  flex: 1;
+  padding: 20px;
+  background-color: #ecf0f1;
+}
+.content-admin h1 {
+  margin-top: 0;
+}
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  line-height: 35px;
+}
+.card h3 {
+  margin-top: 0;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #3498db;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
+  line-height: normal;
+}
+.btn:hover {
+  background-color: #2980b9;
+}
+
+.container1 {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
