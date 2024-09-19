@@ -10,6 +10,9 @@ import Dashboard from "./pages/admin/Dashboard";
 import ProductManagement from "./pages/admin/ProductManagement";
 import AddProductForm from "./components/product-management/AddProductForm";
 import CategoriesManagement from "./pages/admin/CategoriesManagement";
+import { CartProvider } from "../src/components/homePage/cart/CartContext";
+import Checkout from "./components/homePage/CheckOut";
+import ShoppingCart from "./pages/users/ShoppingCart";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +23,14 @@ const router = createBrowserRouter([
   {
     path: "/store",
     element: <StorePage />,
+  },
+  {
+    path: "/checkout",
+    element: <Checkout />,
+  },
+  {
+    path: "/cart",
+    element: <ShoppingCart />,
   },
   {
     path: "/admin",
@@ -53,7 +64,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <CartProvider>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </CartProvider>
 );
