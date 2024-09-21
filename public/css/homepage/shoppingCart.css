@@ -1,0 +1,110 @@
+.cart-icon {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.cart-icon .fa-shopping-cart {
+  font-size: 19px; /* Kích thước biểu tượng */
+  color: white; /* Màu sắc biểu tượng */
+}
+
+.cart-quantity {
+  position: absolute;
+  top: 0; /* Vị trí số lượng trên/dưới */
+  right: 7px; /* Vị trí số lượng trái/phải */
+  background-color: #ff424e; /* Màu nền */
+  color: white; /* Màu chữ */
+  border-radius: 50%; /* Bo tròn */
+  padding: 2px 6px; /* Kích thước padding */
+  font-size: 8px; /* Kích thước chữ */
+  font-weight: bold; /* Độ đậm chữ */
+}
+
+/* General Styles for the Cart */
+.cart-items {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.cart-table th,
+.cart-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Table Header */
+.cart-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+/* Image Styling */
+.item-image {
+  display: inline;
+  width: auto;
+  max-height: 140px;
+  object-fit: cover;
+}
+
+/* Text Styling */
+.item-name {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.item-price {
+  color: #333;
+  font-weight: bold;
+}
+
+/* Quantity Input Styling */
+.quantity-input {
+  width: 60px;
+  padding: 5px;
+  text-align: center;
+}
+
+/* Remove Button */
+.remove-btn {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background-color: #e60000;
+}
+
+/* Total Price */
+.cart-items h3 {
+  margin-top: 20px;
+  font-size: 24px;
+  text-align: right;
+  color: #333;
+}
+
+.buy-now-btn {
+  background-color: #ff9900;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}

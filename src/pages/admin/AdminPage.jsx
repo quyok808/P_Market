@@ -21,7 +21,7 @@ export default function AdminPage() {
                 <Link to="/admin/categories-management">Danh mục</Link>
               </li>
               <li>
-                <a href="#">Đơn hàng</a>
+                <a href="/admin/orders-management">Đơn hàng</a>
               </li>
               <li>
                 <a href="#">Khách hàng</a>
