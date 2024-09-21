@@ -13,6 +13,7 @@ import CategoriesManagement from "./pages/admin/CategoriesManagement";
 import { CartProvider } from "../src/components/homePage/cart/CartContext";
 import Checkout from "./components/homePage/CheckOut";
 import ShoppingCart from "./pages/users/ShoppingCart";
+import OrdersManagement from "./pages/admin/OrdersManagement";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,11 @@ const router = createBrowserRouter([
       {
         path: "categories-management",
         element: <CategoriesManagement />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "orders-management",
+        element: <OrdersManagement />,
         errorElement: <ErrorPage />,
       },
     ],

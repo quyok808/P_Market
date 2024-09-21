@@ -3,8 +3,10 @@ import axios from "axios";
 import AddProductForm from "../../components/product-management/AddProductForm";
 import Modal from "react-modal";
 import EditProductForm from "../../components/product-management/EditProductForm";
+import { useCart } from "../../components/homePage/cart/CartContext";
 
 const ProductManagement = () => {
+  const { removeFromCart } = useCart();
   const [products, setProducts] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpenEdit, setModalIsOpenEdit] = useState(false);
@@ -55,10 +57,16 @@ const ProductManagement = () => {
       setProducts((prevProduct) =>
         prevProduct.filter((product) => product.id != id)
       );
+      removeFromCart(id);
     } catch (error) {
       console.log("Error deleting product", error);
     }
   };
+
+  const formatter = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  });
 
   return (
     <div>
@@ -123,7 +131,7 @@ const ProductManagement = () => {
             <tr key={product.id}>
               <td style={{ fontWeight: "bold" }}>{product.id}</td>
               <td>{product.name}</td>
-              <td>{product.price}</td>
+              <td>{formatter.format(product.price)}</td>
               <td>
                 <img
                   src={`http://localhost:8080/Product_images/${product.image}`}

@@ -3,20 +3,49 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import "../../../public/css/homepage/shoppingCart.css";
 import Layout from "../../Layout";
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css";
+import { useEffect, useState } from "react";
 
 export default function ShoppingCart() {
   function Content() {
     // Function to remove an item from the cart
-    const { cartItems } = useCart();
-    const { getTotalPrice } = useCart();
-    const { updateQuantity } = useCart();
-    const { removeFromCart } = useCart();
+    const { cartItems, getTotalPrice, updateQuantity, removeFromCart } =
+      useCart();
+    const [prevQuantity, setPrevQuantity] = useState([
+      {
+        productId: "",
+        quantity: "",
+      },
+    ]);
+
+    useEffect(() => {
+      const initQuantity = cartItems.map((item) => ({
+        productId: item.id,
+        quantity: item.quantity,
+      }));
+      setPrevQuantity(initQuantity);
+    }, []);
+
+    function notifyUser(textnotify) {
+      Toastify({
+        text: textnotify,
+        duration: 3000,
+        close: false,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#D1E9F6",
+        style: {
+          color: "black",
+        },
+      }).showToast();
+    }
 
     const handleBuyNow = () => {
       if (cartItems.length > 0) {
         window.location.href = "http://localhost:5173/checkout";
       } else {
-        alert("Bạn không có sản phẩm nào trong giỏ hàng để thanh toán");
+        notifyUser("Bạn không có sản phẩm nào trong giỏ hàng để thanh toán");
       }
     };
 
@@ -24,6 +53,32 @@ export default function ShoppingCart() {
       style: "currency",
       currency: "VND",
     });
+
+    const handleKeyDown = (event, productId) => {
+      if (event.key === "Enter") {
+        let newQuantity = parseInt(event.target.value, 10);
+        if (newQuantity > 0) {
+          updateQuantity(productId, newQuantity);
+        } else {
+          alert("Số lượng không thể nhỏ hơn 1 ");
+          console.log(prevQuantity);
+          event.target.value = prevQuantity.find(
+            (item) => item.productId === productId
+          ).quantity;
+        }
+      }
+    };
+
+    const handleOnChange = (event, productId) => {
+      const currentQuantity = parseInt(event.target.value, 10);
+      if (currentQuantity > 0) {
+        setPrevQuantity({
+          ...prevQuantity,
+          [productId]: currentQuantity,
+        });
+      }
+    };
+
     return (
       <div>
         <div className="cart-items">
@@ -58,10 +113,9 @@ export default function ShoppingCart() {
                     <td>
                       <input
                         type="number"
-                        value={item.quantity}
-                        onChange={(e) =>
-                          updateQuantity(item.id, parseInt(e.target.value))
-                        }
+                        defaultValue={item.quantity}
+                        onChange={(event) => handleOnChange(event, item.id)}
+                        onKeyDown={(event) => handleKeyDown(event, item.id)}
                         min="1"
                         className="quantity-input"
                       />

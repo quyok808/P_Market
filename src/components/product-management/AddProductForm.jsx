@@ -124,7 +124,6 @@ const AddProductForm = ({ onAddProduct }) => {
           name="image"
           onChange={handleChange}
           className="input"
-          required
           accept="image/*"
         />
       </label>
@@ -135,7 +134,6 @@ const AddProductForm = ({ onAddProduct }) => {
           value={formData.description}
           onChange={handleChange}
           className="textarea"
-          required
         />
       </label>
       <label className="label">

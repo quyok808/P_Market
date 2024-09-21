@@ -97,3 +97,14 @@
   text-align: right;
   color: #333;
 }
+
+.buy-now-btn {
+  background-color: #ff9900;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}

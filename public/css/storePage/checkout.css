@@ -73,7 +73,7 @@
   border-radius: 4px;
 }
 
-button {
+.button-checkout {
   width: 100%;
   padding: 10px;
   background-color: #007bff;
@@ -84,6 +84,6 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.button-checkout:hover {
   background-color: #0056b3;
 }

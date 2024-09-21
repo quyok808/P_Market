@@ -43,17 +43,6 @@
 
 .product-actions {
   margin-top: 10px;
-  display: flex;
-  place-content: space-between;
-}
-
-.buy-now-btn {
-  background-color: #ff9900;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin-right: 10px;
-  cursor: pointer;
 }
 
 .add-to-cart-btn {
@@ -62,6 +51,7 @@
   border: none;
   padding: 10px 20px;
   cursor: pointer;
+  width: 100%;
 }
 
 .buy-now-btn:hover,
