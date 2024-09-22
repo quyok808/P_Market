@@ -1,8 +1,10 @@
 import Layout from "../../Layout";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useCart } from "../../components/homePage/cart/CartContext";
 
 export default function StorePage() {
+  const { addProductToCart } = useCart();
   const ProductList = () => {
     const [products, setProducts] = useState([]);
 
@@ -22,18 +24,6 @@ export default function StorePage() {
       fetchProducts();
     }, []);
 
-    // Hàm xử lý khi nhấn vào nút "Mua"
-    const handleBuyNow = (product) => {
-      alert(`Bạn đã mua sản phẩm: ${product.name}`);
-      // Thêm các logic xử lý khi người dùng mua sản phẩm
-    };
-
-    // Hàm xử lý khi nhấn vào nút "Thêm vào giỏ hàng"
-    const handleAddToCart = (product) => {
-      alert(`Sản phẩm ${product.name} đã được thêm vào giỏ hàng`);
-      // Thêm các logic xử lý khi người dùng thêm sản phẩm vào giỏ hàng
-    };
-
     return (
       <div>
         <div className="container-storePage">
@@ -51,16 +41,8 @@ export default function StorePage() {
                 <p>Số lượng: {product.quantity}</p>
                 <p>Loại: {product.category?.name}</p>
                 <div className="product-actions">
-                  {/* Nút Mua */}
                   <button
-                    onClick={() => handleBuyNow(product)}
-                    className="buy-now-btn"
-                  >
-                    Mua
-                  </button>
-                  {/* Nút Thêm vào giỏ hàng */}
-                  <button
-                    onClick={() => handleAddToCart(product)}
+                    onClick={() => addProductToCart(product)}
                     className="add-to-cart-btn"
                   >
                     Thêm vào giỏ
