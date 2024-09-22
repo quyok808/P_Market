@@ -1,6 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import HomePage from "./pages/users/HomePage";
 import ErrorPage from "./pages/error-page";
 import "../public/css/styles.css";
@@ -14,6 +18,7 @@ import { CartProvider } from "../src/components/homePage/cart/CartContext";
 import Checkout from "./components/homePage/CheckOut";
 import ShoppingCart from "./pages/users/ShoppingCart";
 import OrdersManagement from "./pages/admin/OrdersManagement";
+import ContactForm from "./components/homePage/ContactForm";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +43,10 @@ const router = createBrowserRouter([
     element: <AdminPage />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "",
+        element: <Navigate to="dashboard" replace />, // Điều hướng mặc định tới Dashboard
+      },
       {
         path: "dashboard",
         element: <Dashboard />,
@@ -66,6 +75,10 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
       },
     ],
+  },
+  {
+    path: "/contact",
+    element: <ContactForm />,
   },
 ]);
 

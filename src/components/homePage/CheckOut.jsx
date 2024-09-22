@@ -16,6 +16,7 @@ export default function CheckOut() {
       city: "",
       note: "",
       country: "",
+      status: "confirming",
       paymentMethod: "bankTransfer",
     });
 
@@ -67,6 +68,8 @@ export default function CheckOut() {
         email: formData.email,
         orderdate: new Date().toISOString(), // Ngày đặt hàng
         total: calculateTotal(),
+        status: formData.status,
+        paymentMethod: formData.paymentMethod,
       };
 
       try {
@@ -211,7 +214,7 @@ export default function CheckOut() {
                   required
                 >
                   <option value="momo">Momo</option>
-                  <option value="cash">Tiền mặt</option>
+                  <option value="cash">Thanh toán khi nhận hàng</option>
                   <option value="bankTransfer">Chuyển khoản ngân hàng</option>
                 </select>
               </div>
