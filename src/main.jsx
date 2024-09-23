@@ -19,6 +19,8 @@ import Checkout from "./components/homePage/CheckOut";
 import ShoppingCart from "./pages/users/ShoppingCart";
 import OrdersManagement from "./pages/admin/OrdersManagement";
 import ContactForm from "./components/homePage/ContactForm";
+import Login from "./pages/users/Login";
+import Register from "./pages/users/Register";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +81,17 @@ const router = createBrowserRouter([
   {
     path: "/contact",
     element: <ContactForm />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+    errorElement: <ErrorPage />,
   },
 ]);
 
