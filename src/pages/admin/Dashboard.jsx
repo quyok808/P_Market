@@ -18,6 +18,18 @@ export default function Dashboard() {
       }
     };
     fetchProduct();
+
+    const fetchOrders = async () => {
+      try {
+        const responseOrder = await axios.get(
+          "http://localhost:8080/v1/api/order"
+        );
+        setOrder(responseOrder.data);
+      } catch (error) {
+        console.log("Error: ", error);
+      }
+    };
+    fetchOrders();
   }, []);
 
   function CaculateQuantityProduct() {
@@ -39,7 +51,7 @@ export default function Dashboard() {
       </div>
       <div className="card">
         <h3>Đơn hàng gần đây</h3>
-        <p>Số lượng đơn hàng: 45</p>
+        <p>Số lượng đơn hàng: {order.length}</p>
         <a href="#" className="btn">
           Xem chi tiết
         </a>
