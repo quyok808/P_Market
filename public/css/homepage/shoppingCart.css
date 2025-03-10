@@ -3,6 +3,7 @@
   display: inline-block;
   color: inherit;
   text-decoration: none;
+  padding-top: 10px;
 }
 
 .cart-icon .fa-shopping-cart {
@@ -12,12 +13,12 @@
 
 .cart-quantity {
   position: absolute;
-  top: 0; /* Vị trí số lượng trên/dưới */
-  right: 7px; /* Vị trí số lượng trái/phải */
+  top: 5px; /* Vị trí số lượng trên/dưới */
+  right: 10.5px; /* Vị trí số lượng trái/phải */
   background-color: #ff424e; /* Màu nền */
   color: white; /* Màu chữ */
   border-radius: 50%; /* Bo tròn */
-  padding: 2px 6px; /* Kích thước padding */
+  padding: 1px 5px; /* Kích thước padding */
   font-size: 8px; /* Kích thước chữ */
   font-weight: bold; /* Độ đậm chữ */
 }
